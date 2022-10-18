@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Read and enjoy</title>
+</head>
+<body>
+         {% csrf_token %}
+        <h2> {{ news_object.title }} </h2>
+        <p> {{ news_object.content }} </p>
+
+        {% if comments %}
+
+        <h3>Comments</h3>
+
+        {% for comment in comments %}
+
+        <h4>>>>{{ comment.name }}</h4>
+        <p>>>>{{ comment.comment }}</p>
+
+        {% endfor %}
+
+        {% else %}
+
+        <h3>No comments yet</h3>
+
+        {% endif %}
+
+        <h4>Leave a comment</h4>
+        <form method="post" action="">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <button type="submit">post a comment</button>
+        </form>
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body>
+  <h1>News</h1>
+  {% if news_list %}
+    <ul>
+        {% for article in news_list %}
+        <li>
+            <a href = '/news/{{ article.id }}'>
+                {{article.title}} | {{article.created_at}} |
+            </a>
+            <a href = '/news/{{ article.id }}/edit'>
+                edit
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Nothing new(</p>
+    {% endif %}
+    <p>
+        <a href = '/news/new'>
+            Make a post
+        </a>
+    </p>
+</body>
+</html>
